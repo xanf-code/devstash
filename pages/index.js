@@ -19,12 +19,12 @@ export default function Home() {
       </Head>
 
       <div
-        className={` selection:bg-purple selection:text-white ${active == true ? "dark" : ""
+        className={`selection:bg-purple selection:text-white ${active == true ? "dark" : ""
           }`}
       >
         <div className="h-screen dark:bg-black bg-white">
           {/* APP HEADER */}
-          <header className="bg-[#fff] border-b-2 border-gray-100 dark:border-gray-900 dark:bg-black lg:w-full lg:fixed">
+          <header className="bg-[#fff] border-b-2 border-gray-100 dark:border-gray-900 dark:bg-black">
             <div className="flex flex-row justify-between  items-center py-3 md:flex-row px-4 container max-w-5xl mx-auto">
               <Link href="/">
                 <a>
