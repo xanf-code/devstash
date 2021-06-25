@@ -3,6 +3,7 @@ import navStore from "../store/menuStore";
 
 function SecondarySidebar() {
     const toggleNav = navStore(state => state.toggleNav)
+
     return (
         <div className="mt-4 flex flex-col">
             <Link href="/">
