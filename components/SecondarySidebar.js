@@ -8,35 +8,35 @@ function SecondarySidebar() {
             <Link href="/">
                 <a onClick={toggleNav} className="hover:bg-blue-100 dark:hover:bg-gray-900 rounded-md my-2 dark:text-white text-[#8739F9]">
                     <div className="font-poppins font-semibold p-2">
-                        🏠 Home
+                        🏠  Home
                     </div>
                 </a>
             </Link>
             <Link href="/stashes">
                 <a onClick={toggleNav} className="hover:bg-blue-100 dark:hover:bg-gray-900 rounded-md my-2 dark:text-white text-[#8739F9]">
                     <div className="font-poppins font-semibold p-2">
-                        🧭 Explore Stashes
+                        🧭  Explore Stashes
                     </div>
                 </a>
             </Link>
-            <Link href="/privacy">
+            <Link href="#">
                 <a onClick={toggleNav} className="hover:bg-blue-100 dark:hover:bg-gray-900 rounded-md my-2 dark:text-white text-[#8739F9]">
                     <div className="font-poppins font-semibold p-2">
-                        🔏 Privacy Policy
+                        🔏  Privacy Policy
                     </div>
                 </a>
             </Link>
-            <Link href="/terms">
+            <Link href="#">
                 <a onClick={toggleNav} className="hover:bg-blue-100 dark:hover:bg-gray-900 rounded-md my-2 dark:text-white text-[#8739F9]">
                     <div className="font-poppins font-semibold p-2">
-                        👀 Terms of use
+                        👀  Terms of use
                     </div>
                 </a>
             </Link>
-            <Link href="/about">
+            <Link href="#">
                 <a onClick={toggleNav} className="hover:bg-blue-100 dark:hover:bg-gray-900 rounded-md my-2 dark:text-white text-[#8739F9]">
                     <div className="font-poppins font-semibold p-2">
-                        🧭 About
+                        💻   About
                     </div>
                 </a>
             </Link>
