@@ -1,27 +1,20 @@
 import Image from 'next/image'
 
 function MainContent() {
-    function onToggle() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.classList.toggle("-translate-x-full")
-    }
     return (
         <div>
             <main className="flex">
                 {/* Sidebar */}
-                <div className="sidebar bg-gray-50 dark:bg-[#0A0806] w-[50%] lg:w-[24%] absolute inset-y-0 left-0 -translate-x-full transition duration-200 ease-in-out lg:fixed lg:translate-x-0">
+                <div className="sidebar z-10 bg-gray-50 dark:bg-[#0A0806] w-[60%] md:w-[50%] lg:w-[24%] absolute inset-y-0 left-0 -translate-x-full transition duration-200 ease-in-out lg:fixed lg:translate-x-0">
                     <h1 className="pt-24">
                         sidebar
                     </h1>
                 </div>
                 <div className="h-screen hidden max-w-xs w-full xl:block"></div>
                 {/* INTRO SECTION */}
-                <section className="pt-14 min-h-screen">
+                <section className="pt-24 min-h-screen">
                     <div className="items-center pt-4 lg:pt-8 px-6 lg:px-4 mx-auto">
                         <div className="w-full mx-auto text-center lg:w-8/12">
-                            <button onClick={onToggle}>
-                                toggle
-                            </button>
                             <h1 className=" text-blue-600 text-lg font-bold font-montserrat uppercase tracking-widest">#devstash</h1>
                             <h1 className=" tracking-tighter md:tracking-tight dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl font-montserrat ">A list of
                                 coding resources for noobies and new devs <span>
