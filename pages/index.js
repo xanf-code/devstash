@@ -1,8 +1,8 @@
 import Head from "next/head";
 import MainContent from "../components/MainContent";
-import HeaderElement from "../components/HeaderElement";
 import { Component } from 'react';
 import themeStore from "../store/darkMode";
+import ComponentLayout from "../components/Layout/ComponentLayout";
 
 class Home extends Component {
 
@@ -22,17 +22,9 @@ class Home extends Component {
           <title>Devstash</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div
-          className='selection:bg-purple selection:text-white'
-        >
-          <div className=" dark:bg-black bg-white">
-            {/* APP HEADER */}
-            <HeaderElement />
-            {/* MAIN SECTION */}
-            <MainContent />
-            {/* App Footer */}
-          </div>
-        </div>
+        <ComponentLayout>
+          <MainContent />
+        </ComponentLayout>
       </div>
     );
   }
