@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <Head>
-        <title>Devstash</title>
+        <title>Explore</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ComponentLayout>
