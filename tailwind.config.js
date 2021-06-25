@@ -12,7 +12,8 @@ module.exports = {
         'lato': ['Lato'],
         'poppins': ['Poppins'],
         'open-sans': ['"Open Sans"'],
-      }
+      },
+      colors: {},
     },
   },
   variants: {
