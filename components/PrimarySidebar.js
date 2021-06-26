@@ -67,7 +67,7 @@ function PrimarySidebar() {
     return (
         <div className=" bg-gray-100 dark:bg-gray-900 rounded-md">
             <div className="p-4">
-                <h1 className="font-montserrat text-base font-bold text-black dark:text-white">
+                <h1 className="font-montserrat text-base font-bold text-black dark:text-white mb-1">
                     Trending Stash⚡📈
                 </h1>
                 <div className="flex flex-wrap">

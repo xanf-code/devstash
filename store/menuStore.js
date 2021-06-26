@@ -2,7 +2,7 @@ import create from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 let mobileNav = (set) => ({
-    activeElement: 'Home',
+    activeElement: 0,
     toggleNav: () => {
         const sidebar = document.querySelector('.sidebar');
         sidebar.classList.toggle("-translate-x-full")

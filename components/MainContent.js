@@ -5,7 +5,7 @@ function MainContent() {
         <main>
             <section className="pt-24 min-h-screen lg:min-h-0">
                 <h1 className=" text-blue-600 text-lg font-bold font-montserrat uppercase tracking-widest">#devstash</h1>
-                <h1 className=" tracking-tighter md:tracking-tight dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl font-montserrat mb-2"> A list of
+                <h1 className=" tracking-tighter md:tracking-tight dark:text-white font-bold leading-none text-[50px] md:text-5xl xl:text-6xl font-montserrat mb-2"> A list of
                     coding resources for noobies and new devs <span>
                         <Image src="https://emojis.slackmojis.com/emojis/images/1600706728/10521/meow_code.gif?1600706728" alt="Picture of the author"
                             width={40}
