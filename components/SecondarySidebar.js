@@ -1,12 +1,17 @@
 import Link from 'next/link'
 import navStore from "../store/menuStore";
+import { signIn, signOut, useSession } from 'next-auth/client';
 import { useEffect, useState } from "react";
+import { Button } from "@chakra-ui/react"
 
-function SecondarySidebar() {
+export default function SecondarySidebar() {
+
     const toggleNav = navStore(state => state.toggleNav);
     const activeNav = navStore(state => state.activeNav);
     const activeElement = navStore(state => state.activeElement);
+
     const [pageURL, setPageURL] = useState('/');
+    const [session, loading] = useSession();
 
     if (process.browser) {
         var location = window.location.pathname;
@@ -59,8 +64,24 @@ function SecondarySidebar() {
                     </a>
                 </Link>
             })}
+            {!session && (
+                <div className="mt-1.5">
+                    <Button onClick={() => signIn()} colorScheme="messenger" isFullWidth={true} variant="solid">
+                        <h1 className="text-white font-poppins font-semibold">
+                            SignIn
+                        </h1>
+                    </Button>
+                </div>
+            )}
+            {session && (
+                <div className="lg:hidden xl:hidden mt-1.5">
+                    <Button onClick={signOut} colorScheme="messenger" isFullWidth={true} variant="solid">
+                        <h1 className="text-white font-poppins font-semibold">
+                            Sign Out
+                        </h1>
+                    </Button>
+                </div>
+            )}
         </div >
     )
 }
-
-export default SecondarySidebar
