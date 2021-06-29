@@ -1,8 +1,9 @@
 import Head from "next/head";
 import MainContent from "../components/MainContent";
 import ComponentLayout from "../components/Layout/ComponentLayout";
+import { getSession } from 'next-auth/client';
 
-function Home() {
+export default function Home() {
   return (
     <div>
       <Head>
@@ -15,5 +16,11 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
+export async function getServerSideProps(ctx) {
+  const session = await getSession(ctx);
+  return {
+    props: {
+      session
+    }
+  }
+}

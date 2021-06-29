@@ -2,6 +2,12 @@ import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
 export default NextAuth({
+    callbacks: {
+        session: async (session, user) => {
+            session.id = user.id
+            return Promise.resolve(session)
+        }
+    },
     providers: [
         Providers.GitHub({
             clientId: process.env.GITHUB_ID,

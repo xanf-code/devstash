@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { Button } from "@chakra-ui/react"
 
 function MainContent() {
-
     const router = useRouter();
 
     const handleClick = (e) => {
@@ -13,7 +12,7 @@ function MainContent() {
 
     return (
         <main>
-            <section className="pt-24 min-h-screen lg:min-h-0">
+            <section className="md:pt-[40%] lg:pt-[20%] min-h-screen m-auto">
                 <h1 className=" text-blue-600 text-lg font-bold font-montserrat uppercase tracking-widest">#devstash</h1>
                 <h1 className=" tracking-tighter md:tracking-tight dark:text-white font-bold leading-none text-[50px] md:text-5xl xl:text-6xl font-montserrat mb-2"> A list of
                     coding resources for noobies and new devs <span>

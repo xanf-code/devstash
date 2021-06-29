@@ -3,8 +3,19 @@ import SidebarComponent from '../components/SidebarComponent'
 import { Component } from 'react';
 import themeStore from "../store/darkMode";
 import { v4 as uuidv4 } from 'uuid';
+import { ChakraProvider } from "@chakra-ui/react"
+import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@apollo/client'
 
 let userUUID = uuidv4();
+
+const httpLink = createHttpLink({
+    uri: 'https://devstashbackend.herokuapp.com/'
+})
+
+const client = new ApolloClient({
+    link: httpLink,
+    cache: new InMemoryCache()
+})
 
 const uuidCheck = () => {
     const user = localStorage.getItem("uuid")
@@ -26,7 +37,7 @@ const themeCheck = () => {
         themeStore.setState({ dark: false })
     }
 }
-class Layout extends Component {
+export default class Layout extends Component {
 
     componentDidMount() {
         themeCheck()
@@ -35,13 +46,15 @@ class Layout extends Component {
 
     render() {
         return (
-            <div className=" dark:bg-black bg-white">
-                <HeaderElement />
-                <SidebarComponent />
-                {this.props.children}
-            </div>
+            <ApolloProvider client={client}>
+                <ChakraProvider>
+                    <div className=" dark:bg-black bg-white">
+                        <HeaderElement />
+                        <SidebarComponent />
+                        {this.props.children}
+                    </div>
+                </ChakraProvider>
+            </ApolloProvider>
         )
     }
 }
-
-export default Layout

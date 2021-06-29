@@ -1,69 +1,20 @@
 import TrendingComponent from "./TrendingComponent"
+import { useQuery, gql } from "@apollo/client"
+import { Spinner } from "@chakra-ui/react"
+import Link from 'next/link'
 
-function PrimarySidebar() {
-    // 15 Items in trending
-    const trendingStashes = [
-        {
-            id: 1,
-            name: 'Java',
-        },
-        {
-            id: 2,
-            name: 'Go',
-        },
-        {
-            id: 3,
-            name: 'Python',
-        },
-        {
-            id: 4,
-            name: 'ML',
-        },
-        {
-            id: 5,
-            name: 'Node',
-        },
-        {
-            id: 6,
-            name: 'Express',
-        },
-        {
-            id: 7,
-            name: 'Fastify',
-        },
-        {
-            id: 8,
-            name: 'Svelte',
-        },
-        {
-            id: 9,
-            name: 'NextJS',
-        },
-        {
-            id: 10,
-            name: 'React',
-        },
-        {
-            id: 11,
-            name: 'Vue',
-        },
-        {
-            id: 12,
-            name: 'Deno',
-        },
-        {
-            id: 13,
-            name: 'Strapi',
-        },
-        {
-            id: 14,
-            name: 'REST API',
-        },
-        {
-            id: 15,
-            name: '#C',
+export default function PrimarySidebar() {
+
+    const FETCH_TAGS_QUERY = gql`
+   {
+    getPosts(limit:15 page:1){
+        tag
         }
-    ]
+    }
+    `
+
+    const { loading, data } = useQuery(FETCH_TAGS_QUERY);
+
     return (
         <div className=" bg-gray-100 dark:bg-gray-900 rounded-md">
             <div className="p-4">
@@ -71,15 +22,23 @@ function PrimarySidebar() {
                     Trending Stash⚡📈
                 </h1>
                 <div className="flex flex-wrap">
-                    {trendingStashes.map((data) => {
-                        return <div key={data.id}>
-                            <TrendingComponent trendingData={data} />
-                        </div>
-                    })}
+                    {data && !loading ? (
+                        data.getPosts.map((data) => {
+                            return <div key={data.tag}>
+                                <Link href={`/tags/${encodeURIComponent(data.tag)}`}>
+                                    <a>
+                                        <TrendingComponent trendingData={data} />
+                                    </a>
+                                </Link>
+                            </div>
+                        })
+                    ) : (
+                        <span className="mx-auto my-4">
+                            <Spinner size="lg" />
+                        </span>
+                    )}
                 </div>
             </div>
         </div>
     )
 }
-
-export default PrimarySidebar

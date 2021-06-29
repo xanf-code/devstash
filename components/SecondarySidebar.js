@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react"
 
 export default function SecondarySidebar() {
-
     const toggleNav = navStore(state => state.toggleNav);
     const activeNav = navStore(state => state.activeNav);
     const activeElement = navStore(state => state.activeElement);

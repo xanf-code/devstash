@@ -11,12 +11,10 @@ function stashes() {
             <div
                 className='selection:bg-purple selection:text-white'
             >
-                <div className="flex">
-                    <div className="h-screen hidden max-w-xs w-full xl:block"></div>
-                    <div className="container px-4 mx-auto lg:pl-12 lg:pr-4">
-                        <StashComponent />
-                    </div>
-                </div>
+
+                <section className="min-h-screen px-4 lg:pl-12 lg:pr-4">
+                    <StashComponent />
+                </section>
             </div>
         </div>
     );

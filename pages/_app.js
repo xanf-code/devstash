@@ -1,18 +1,17 @@
 import '../styles/globals.css'
 import Layout from '../components/Layout';
-import { ChakraProvider } from "@chakra-ui/react"
 import { Provider } from 'next-auth/client'
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <Provider session={pageProps.session}>
-      <ChakraProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
-    </Provider>
+    <Provider session={pageProps.session}
+      options={{
+        keepAlive: 5 * 60
+      }}
+    >
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider >
   )
 }
-
-export default MyApp
