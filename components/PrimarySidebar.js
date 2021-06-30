@@ -1,17 +1,10 @@
 import TrendingComponent from "./TrendingComponent"
-import { useQuery, gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { Spinner } from "@chakra-ui/react"
 import Link from 'next/link'
+import { FETCH_TAGS_QUERY } from '../graphQL/queries'
 
 export default function PrimarySidebar() {
-
-    const FETCH_TAGS_QUERY = gql`
-   {
-    getPosts(limit:15 page:1){
-        tag
-        }
-    }
-    `
 
     const { loading, data } = useQuery(FETCH_TAGS_QUERY);
 

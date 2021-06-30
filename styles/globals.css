@@ -10,6 +10,14 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  @variants responsive {
+    .masonry {
+      column-count: 3;
+    }
+    .break-inside {
+      break-inside: avoid;
+    }
+  }
 }
 
 @layer base {
