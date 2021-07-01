@@ -1,9 +1,9 @@
 export default function TrendingComponent({ trendingData }) {
     return (
-        <div className="px-1 py-1 cursor-pointer hover:-translate-y-0.5">
-            <div className="bg-[#8739F9] rounded-md">
-                <h1 className="font-poppins font-base text-[#fff] px-2 py-0.5">{trendingData.tag}</h1>
-            </div>
+        <div className='px-1 py-1 m-0.5 rounded-[5px] bg-[#e3edf9] dark:bg-[#151617] cursor-pointer hover:-translate-y-0.5'>
+            <h1 className=" px-2 py-0.5 text-[#5790cf] font-poppins text-xs font-medium leading-relaxed tracking-wide">
+                #{trendingData.tag.toUpperCase()}
+            </h1>
         </div>
     )
 }

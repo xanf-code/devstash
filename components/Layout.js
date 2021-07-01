@@ -48,7 +48,7 @@ export default class Layout extends Component {
         return (
             <ApolloProvider client={client}>
                 <ChakraProvider>
-                    <div className=" dark:bg-black bg-white">
+                    <div className="dark:bg-black bg-white">
                         <HeaderElement />
                         <SidebarComponent />
                         {this.props.children}

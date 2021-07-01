@@ -17,7 +17,7 @@ export default function PrimarySidebar() {
                 <div className="flex flex-wrap">
                     {data && !loading ? (
                         data.getPosts.map((data) => {
-                            return <div key={data.tag}>
+                            return <div key={data.id}>
                                 <Link href={`/tags/${encodeURIComponent(data.tag)}`}>
                                     <a>
                                         <TrendingComponent trendingData={data} />

@@ -1,6 +1,5 @@
 import Head from "next/head";
 import MainContent from "../components/MainContent";
-import ComponentLayout from "../components/Layout/ComponentLayout";
 import { getSession } from 'next-auth/client';
 
 export default function Home() {
@@ -10,9 +9,9 @@ export default function Home() {
         <title>Devstash</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ComponentLayout>
+      <div className="lg:pt-0 px-6 lg:px-0 min-h-screen w-full m-auto text-center lg:w-6/12">
         <MainContent />
-      </ComponentLayout>
+      </div>
     </div>
   );
 }

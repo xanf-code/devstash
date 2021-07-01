@@ -8,9 +8,9 @@ function stashes() {
                 <title>Explore</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <section className="min-h-screen">
+            <div className="min-h-screen">
                 <StashComponent />
-            </section>
+            </div>
         </div>
     );
 }
