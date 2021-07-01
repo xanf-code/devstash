@@ -9,7 +9,7 @@ import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@ap
 let userUUID = uuidv4();
 
 const httpLink = createHttpLink({
-    uri: 'https://devstash.herokuapp.com/'
+    uri: 'https://snowy-morning-277.fly.dev/'
 })
 
 const client = new ApolloClient({
