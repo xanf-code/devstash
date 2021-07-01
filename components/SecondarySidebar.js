@@ -3,8 +3,10 @@ import navStore from "../store/menuStore";
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react"
+import sessionData from '../store/session'
 
 export default function SecondarySidebar() {
+
     const toggleNav = navStore(state => state.toggleNav);
     const activeNav = navStore(state => state.activeNav);
     const activeElement = navStore(state => state.activeElement);
@@ -20,8 +22,10 @@ export default function SecondarySidebar() {
         if (process.browser) {
             setPageURL(location);
         }
-
-    }, [activeElement, location])
+        if (session) {
+            sessionData.setState({ sessionID: session.id })
+        }
+    }, [activeElement, location, session])
 
 
     const menuData = [

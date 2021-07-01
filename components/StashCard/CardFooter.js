@@ -1,16 +1,24 @@
+import LikeButton from './LikeButton'
+
 function CardFooter({ stash }) {
+
     return (
         <div>
             <div className="p-4">
                 <div className="flex justify-between">
                     <ul className="flex justify-evenly">
                         <li className="pr-4">
-                            <span>
-                                {stash.likeCount}
+                            <span className="flex">
+                                <LikeButton stash={stash} />
+                                <h1 className="text-black dark:text-white font-poppins font-semibold">
+                                    {stash.likeCount}
+                                </h1>
                             </span>
                         </li>
                         <li>
-                            {stash.viewCount}
+                            <h1 className="text-black dark:text-white font-poppins font-semibold">
+                                {stash.viewCount}
+                            </h1>
                         </li>
                     </ul>
                     <ul>

@@ -1,16 +1,15 @@
-import TrendingComponent from "./TrendingComponent"
-import { useQuery } from "@apollo/client"
-import { Spinner } from "@chakra-ui/react"
-import { FETCH_TAGS_QUERY } from '../graphQL/queries'
-import getTag from "../store/getTag";
-import navStore from "../store/menuStore";
+import TrendingComponent from "../TrendingComponent";
+import { useQuery } from "@apollo/client";
+import { Spinner } from "@chakra-ui/react";
+import { FETCH_TAGS_QUERY } from "../../graphQL/queries";
+import getTag from "../../store/getTag";
+import ClearComponent from "../../components/Desktop/ClearComponent"
 import { useState, useEffect } from "react";
 
-export default function PrimarySidebar() {
-    // const initial = getTag((state) => state.initial);
+export default function TrendingDesktop() {
     const [sorted, setSort] = useState([]);
 
-    const toggleNav = navStore(state => state.toggleNav);
+    const initial = getTag((state) => state.initial);
     const tagClick = getTag((state) => state.tagClick);
 
     const { loading, data } = useQuery(FETCH_TAGS_QUERY, {
@@ -28,27 +27,29 @@ export default function PrimarySidebar() {
         }
     }, [data])
 
-    const toggle = async (data) => {
-        await tagClick(data);
-        toggleNav();
-    }
-
     return (
-        <div className="lg:hidden bg-gray-100 dark:bg-gray-900 rounded-md">
-            <div className="p-4">
-                <h1 className="font-montserrat text-base font-bold text-black dark:text-white mb-1">
-                    Trending Stash⚡📈
-                </h1>
+        <div className="lg:pt-[90px] h-0">
+            <div className="pl-4 pb-2">
+                <span className="flex justify-between">
+                    <h1 className="font-montserrat text-base font-bold text-black dark:text-white mb-1">
+                        Trending 📈
+                    </h1>
+                    {initial != "" ? (
+                        <ClearComponent />
+                    ) : (
+                        ""
+                    )}
+                </span>
                 <div className="flex flex-wrap">
                     {data && !loading ? (
                         sorted.map((data) => {
                             return (
                                 <div className="select-none" key={data.id}>
-                                    <div onClick={() => toggle(data.tag)}>
+                                    <div onClick={() => tagClick(data.tag)}>
                                         <TrendingComponent trendingData={data} />
                                     </div>
                                 </div>
-                            )
+                            );
                         })
                     ) : (
                         <span className="mx-auto my-4">
@@ -58,5 +59,5 @@ export default function PrimarySidebar() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
