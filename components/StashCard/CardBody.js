@@ -2,10 +2,8 @@ import { Img } from "@chakra-ui/react"
 
 function CardBody({ stash }) {
     return (
-        <div>
-            <span className="mt-3">
-                <Img src={stash.image} alt={stash.username} objectFit="cover" />
-            </span>
+        <div className="mt-3">
+            <Img className="m-auto" src={stash.image} alt={stash.username} />
         </div>
     )
 }

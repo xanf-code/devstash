@@ -5,9 +5,13 @@ import { FETCH_TAGS_QUERY } from '../graphQL/queries'
 import getTag from "../store/getTag";
 import navStore from "../store/menuStore";
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 
 export default function PrimarySidebar() {
     // const initial = getTag((state) => state.initial);
+
+    const router = useRouter()
+
     const [sorted, setSort] = useState([]);
 
     const toggleNav = navStore(state => state.toggleNav);
@@ -29,6 +33,9 @@ export default function PrimarySidebar() {
     }, [data])
 
     const toggle = async (data) => {
+        if (window.location.pathname != "/stashes") {
+            router.push("/stashes")
+        }
         await tagClick(data);
         toggleNav();
     }

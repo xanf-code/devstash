@@ -1,4 +1,4 @@
-function PrivacyPolicy() {
+export default function PrivacyPolicy() {
     return (
         <main>
             <section className="pt-20 min-h-screen lg:min-h-0">
@@ -7,5 +7,3 @@ function PrivacyPolicy() {
         </main>
     )
 }
-
-export default PrivacyPolicy

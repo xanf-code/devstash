@@ -1,4 +1,4 @@
-function TermsAndConditions() {
+export default function TermsAndConditions() {
     return (
         <div>
             <main>
@@ -9,5 +9,3 @@ function TermsAndConditions() {
         </div>
     )
 }
-
-export default TermsAndConditions

@@ -1,11 +1,11 @@
 import getTag from "../../store/getTag";
 
-function ClearComponent() {
+export default function ClearComponent() {
 
     const clear = getTag((state) => state.clear);
 
     return (
-        <div onClick={() => clear()} className="cursor-pointer flex pr-2">
+        <div onClick={() => clear()} className="lg:cursor-pointer flex pr-2">
             <svg
                 className="self-center pr-1 text-[#5790cf]"
                 height="12"
@@ -30,5 +30,3 @@ function ClearComponent() {
         </div>
     )
 }
-
-export default ClearComponent

@@ -1,4 +1,4 @@
-function AboutComponent() {
+export default function AboutComponent() {
     return (
         <div>
             <main>
@@ -9,5 +9,3 @@ function AboutComponent() {
         </div>
     )
 }
-
-export default AboutComponent

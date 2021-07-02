@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
-import { LIKE_POST_QUERY, FETCH_POSTS_QUERY } from "../../graphQL/queries";
+import { LIKE_POST_QUERY } from "../../graphQL/queries";
 import sessionData from "../../store/session";
-import Link from 'next/link'
 import { signIn } from 'next-auth/client';
 
 function LikeButton({ stash: { id, likes } }) {
@@ -38,7 +37,7 @@ function LikeButton({ stash: { id, likes } }) {
 
     );
 
-    return <div onClick={likePost}>{likeButton}</div>;
+    return <div className="self-center" onClick={likePost}>{likeButton}</div>;
 }
 
 export default LikeButton;

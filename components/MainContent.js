@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Button } from "@chakra-ui/react"
 
-function MainContent() {
+export default function MainContent() {
     const router = useRouter();
 
     const handleClick = (e) => {
@@ -32,5 +32,3 @@ function MainContent() {
         </main>
     )
 }
-
-export default MainContent
