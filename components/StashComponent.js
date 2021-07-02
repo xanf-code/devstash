@@ -1,23 +1,32 @@
-import { useQuery } from "@apollo/client";
-import StashCard from "../components/StashCard";
+import MasonryCard from "./StashCard/Masonry";
 import TrendingDesktop from "./Desktop/TrendingComponent";
-import { FETCH_POSTS_QUERY } from "../graphQL/queries";
-import getTag from "../store/getTag";
-import { useSession } from 'next-auth/client';
+import React, { useState } from "react";
+import useStore from "../store/pagination";
 
 export default function StashComponent() {
 
-    const [session] = useSession();
-    const initial = getTag((state) => state.initial);
+    const setInitital = useStore(state => state.setInitital);
+    const [value, setValue] = useState('-createdAt');
 
-    const { loading, data } = useQuery(FETCH_POSTS_QUERY, {
-        variables: {
-            limit: 30,
-            page: 1,
-            sortBy: "-createdAt",
-            tag: initial
-        }
-    });
+    const menu = [
+        {
+            name: "Recents",
+            value: "-createdAt"
+        },
+        {
+            name: "Most Stashed",
+            value: "-likeCount"
+        },
+        {
+            name: "Most Viewed",
+            value: "-viewCount"
+        },
+    ]
+
+    function onTrigger(value) {
+        setInitital()
+        setValue(value)
+    }
 
     return (
         <div className="flex-0 lg:flex">
@@ -25,20 +34,22 @@ export default function StashComponent() {
                 <TrendingDesktop />
             </div>
             <div className="pt-16 lg:ml-4 lg:pt-20 min-h-screen lg:min-h-0 m-auto lg:m-0 w-[90%] lg:w-[80%]">
-                <div className="lg:p-2">
-                    <h1 className="mb-3 pt-4 lg:pt-0 lg:mb-5 text-blue-600 text-lg font-bold font-montserrat uppercase tracking-widest">
-                        Stash
-                    </h1>
-                    {loading ? (
-                        <h1>Loading...</h1>
-                    ) : (
-                        data && !loading &&
-                        <div className="lg:masonry lg:before:box-inherit lg:after:box-inherit">
-                            {data.getPosts.map((stash, index) => {
-                                return <StashCard key={index} stash={stash} session={session} />
-                            })}
+                <div className="pt-2">
+                    <div className="pb-2 flex">
+                        <div className="bg-red-500">
+                            haha
                         </div>
-                    )}
+                        <div className="bg-red-300 w-full">
+                            <div className="flex">
+                                {menu.map(ind => {
+                                    return <div key={ind.name} onClick={() => onTrigger(ind.value)} className="lg:cursor-pointer">
+                                        <h1>{ind.name}</h1>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                    <MasonryCard value={value} />
                 </div>
             </div>
         </div>

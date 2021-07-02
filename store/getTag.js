@@ -9,6 +9,8 @@ let grabTag = set => ({
     clear: () => set({
         initial: ""
     }),
+    initialpage: 1,
+    incrementPage: () => set(state => ({ initialpage: state.initialpage + 1 })),
 })
 
 grabTag = devtools(grabTag)

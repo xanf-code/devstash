@@ -23,7 +23,7 @@ export default function HeaderElement() {
     }, [dark])
 
     return (
-        <header className="bg-[#fff] border-b-2 border-gray-100 dark:border-gray-900 dark:bg-black z-50 fixed w-screen">
+        <header className="duration-200 bg-[#fff] border-b-2 border-gray-100 dark:border-gray-900 dark:bg-black z-50 fixed w-screen">
             <div className="flex flex-row justify-between items-center py-3 md:flex-row px-4 container max-w-5xl mx-auto">
                 <Link href="/">
                     <a>

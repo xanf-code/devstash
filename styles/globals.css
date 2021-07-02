@@ -11,12 +11,14 @@
     -webkit-text-fill-color: transparent;
   }
   @variants responsive {
-    .masonry {
-      column-count: 3;
+    .my-masonry-grid {
+      display: flex;
+      margin-left: -20px;
+      width: auto;
     }
-    .break-inside {
+    .my-masonry-grid_column > div {
       margin-bottom: 20px;
-      break-inside: avoid;
+      margin-left: 20px;
     }
   }
 }

@@ -11,11 +11,6 @@ function stashes() {
             <div className="min-h-screen">
                 <StashComponent />
             </div>
-            <div className="w-full">
-                <h1 className="m-auto">
-                    Pagination
-                </h1>
-            </div>
         </div>
     );
 }

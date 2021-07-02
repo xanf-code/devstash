@@ -3,9 +3,11 @@ import { gql } from "@apollo/client";
 const FETCH_TAGS_QUERY = gql`
   query getPosts($limit: Int!, $page: Int!) {
     getPosts(limit: $limit, page: $page) {
-      id
-      score
-      tag
+      posts {
+        id
+        score
+        tag
+      }
     }
   }
 `;
@@ -13,23 +15,26 @@ const FETCH_TAGS_QUERY = gql`
 const FETCH_POSTS_QUERY = gql`
   query getPosts($limit: Int!, $page: Int!, $tag: String, $sortBy: String) {
     getPosts(limit: $limit, page: $page, tag: $tag, sortBy: $sortBy) {
-      id
-      tag
-      createdAt
-      body
-      title
-      image
-      likes {
+      hasNext
+      posts {
+        id
+        tag
         createdAt
-        username
-        userID
+        body
+        title
+        image
+        likes {
+          createdAt
+          username
+          userID
+        }
+        creator {
+          username
+          userImage
+        }
+        likeCount
+        viewCount
       }
-      creator {
-        username
-        userImage
-      }
-      likeCount
-      viewCount
     }
   }
 `;

@@ -26,7 +26,7 @@ export default function PrimarySidebar() {
 
     useEffect(() => {
         if (data) {
-            const arrayForSort = [...data.getPosts]
+            const arrayForSort = [...data.getPosts.posts]
             const sort = arrayForSort.sort((a, b) => b.score - a.score);
             setSort([...sort])
         }
