@@ -2,7 +2,7 @@ import Link from 'next/link'
 import navStore from "../store/menuStore";
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { useEffect, useState } from "react";
-import { Button } from "@chakra-ui/react"
+import Button from '../components/Buttons/Button'
 import sessionData from '../store/session'
 
 export default function SecondarySidebar() {
@@ -69,20 +69,12 @@ export default function SecondarySidebar() {
             })}
             {!session && (
                 <div className="mt-1.5">
-                    <Button onClick={() => signIn()} colorScheme="messenger" isFullWidth={true} variant="solid">
-                        <h1 className="text-white font-poppins font-semibold">
-                            SignIn
-                        </h1>
-                    </Button>
+                    <Button clickhandler={signIn} class="bg-[#0078ff] rounded-md lg:cursor-pointer" textClass="p-2 text-white font-poppins font-semibold flex justify-center self-center" text="SignIn" />
                 </div>
             )}
             {session && (
-                <div className="lg:hidden xl:hidden mt-1.5">
-                    <Button onClick={signOut} colorScheme="messenger" isFullWidth={true} variant="solid">
-                        <h1 className="text-white font-poppins font-semibold">
-                            Sign Out
-                        </h1>
-                    </Button>
+                <div className="lg:hidden mt-1.5">
+                    <Button clickhandler={signOut} class="bg-[#0078ff] rounded-md lg:cursor-pointer" textClass="p-2 text-white font-poppins font-semibold flex justify-center self-center" text="Sign Out" />
                 </div>
             )}
         </div >

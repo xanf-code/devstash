@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Button } from "@chakra-ui/react"
+import Button from '../components/Buttons/Button'
 
 export default function MainContent() {
+
     const router = useRouter();
 
     const handleClick = (e) => {
@@ -22,11 +23,7 @@ export default function MainContent() {
                     </span></h1>
                 <h1 className=" text-gray-600 dark:text-gray-400 font-semibold text-base md:text-xl font-montserrat leading-relaxed">There are lots of tools to choose from, and it’s hard to find the right ones. That’s why I created this list – so you save time by easily finding the best stuff out there.</h1>
                 <div className="shadow-md m-auto mt-4 hover:-translate-y-0.5">
-                    <Button _hover={{ bg: 'transparent' }} onClick={handleClick} isFullWidth={true} colorScheme="teal" variant="outline">
-                        <h1 className="text-black dark:text-white font-poppins font-semibold">
-                            Get Started
-                        </h1>
-                    </Button>
+                    <Button clickhandler={handleClick} class="duration-200 hover:shadow-lg border-[1px] dark:border-white border-black w-full bg-white dark:bg-black rounded-md lg:cursor-pointer" textClass="p-2 text-black dark:text-white font-poppins font-semibold self-center" text="Get Started" />
                 </div>
             </section>
         </main>
