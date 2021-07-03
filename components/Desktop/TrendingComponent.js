@@ -1,6 +1,5 @@
 import TrendingComponent from "../TrendingComponent";
 import { useQuery } from "@apollo/client";
-import { Spinner } from "@chakra-ui/react";
 import { FETCH_TAGS_QUERY } from "../../graphQL/queries";
 import getTag from "../../store/getTag";
 import ClearComponent from "../../components/Desktop/ClearComponent"
@@ -14,7 +13,7 @@ export default function TrendingDesktop() {
 
     const { loading, data } = useQuery(FETCH_TAGS_QUERY, {
         variables: {
-            limit: 10,
+            limit: 50,
             page: 1,
         },
     });
@@ -23,7 +22,16 @@ export default function TrendingDesktop() {
         if (data) {
             const arrayForSort = [...data.getPosts.posts]
             const sort = arrayForSort.sort((a, b) => b.score - a.score);
-            setSort([...sort])
+            var uniqueArr = [];
+            sort.forEach((item) => {
+                if (!uniqueArr.includes(item.tag)) {
+                    uniqueArr.push(item.tag);
+                }
+            })
+            const obj = uniqueArr.map(item => ({
+                tag: item
+            }))
+            setSort([...obj])
         }
     }, [data])
 
@@ -53,7 +61,7 @@ export default function TrendingDesktop() {
                         })
                     ) : (
                         <span className="mx-auto my-4">
-                            <Spinner size="lg" />
+                            <h1>Loading...</h1>
                         </span>
                     )}
                 </div>

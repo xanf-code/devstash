@@ -2,8 +2,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import themeStore from "../store/darkMode";
 import navStore from "../store/menuStore";
-import { Avatar, Wrap, WrapItem, Menu, MenuItem, MenuList, MenuButton } from "@chakra-ui/react"
 import { signOut, useSession } from 'next-auth/client';
+import Image from 'next/image'
 
 export default function HeaderElement() {
 
@@ -36,36 +36,9 @@ export default function HeaderElement() {
                     <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
                         {session && (
                             <div className="invisible lg:visible">
-                                <Menu colorScheme="teal">
-                                    <Wrap>
-                                        <WrapItem>
-                                            <MenuButton>
-                                                <Avatar size="sm" name={session.user.name} src={session.user.image} />
-                                            </MenuButton>
-                                        </WrapItem>
-                                    </Wrap>
-                                    {/* Temporary Fix */}
-                                    {dark && (
-                                        <MenuList bg="#111111">
-                                            <MenuItem _hover={{ bg: "gray.900" }} >
-                                                <h1 className="font-poppins font-semibold text-white">Bookmarks</h1>
-                                            </MenuItem>
-                                            <MenuItem _hover={{ bg: "gray.900" }} onClick={() => signOut()}>
-                                                <h1 className="font-poppins font-semibold text-white">Sign Out</h1>
-                                            </MenuItem>
-                                        </MenuList>
-                                    )}
-                                    {!dark && (
-                                        <MenuList >
-                                            <MenuItem  >
-                                                <h1 className="font-poppins font-semibold text-[#8739F9]">Bookmarks</h1>
-                                            </MenuItem>
-                                            <MenuItem onClick={() => signOut()}>
-                                                <h1 className="font-poppins font-semibold text-[#8739F9]">Sign Out</h1>
-                                            </MenuItem>
-                                        </MenuList>
-                                    )}
-                                </Menu>
+                                <span className="flex self-center lg:cursor-pointer">
+                                    <Image className="inline object-cover mr-0.5 rounded-full" src={session.user.image} alt={session.user.name} width={30} height={30} />
+                                </span>
                             </div>
                         )}
                         <div onClick={toggleTheme} className="self-center pl-4 pr-1 lg:cursor-pointer">

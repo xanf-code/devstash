@@ -1,28 +1,19 @@
-import { useQuery } from "@apollo/client";
 import StashCard from "../../components/StashCard";
-import { FETCH_POSTS_QUERY } from "../../graphQL/queries";
-import getTag from "../../store/getTag";
 import { useSession } from 'next-auth/client';
 import Masonry from 'react-masonry-css'
 import { Waypoint } from 'react-waypoint';
 import React from "react";
 import useStore from "../../store/pagination";
 
-export default function MasonryCard({ value }) {
+export default function MasonryCard({ value,
+    fetchMore,
+    data,
+    loading,
+    initial }) {
 
     const [session] = useSession();
-    const initial = getTag(state => state.initial);
     const initialPage = useStore(state => state.initialPage);
     const increment = useStore(state => state.increment);
-
-    const { loading, data, fetchMore } = useQuery(FETCH_POSTS_QUERY, {
-        variables: {
-            limit: 10,
-            page: 1,
-            sortBy: value,
-            tag: initial
-        }
-    });
 
     const breakpointColumnsObj = {
         default: 3,

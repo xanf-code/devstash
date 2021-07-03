@@ -6,7 +6,7 @@ function CardHeader({ stash }) {
         <div>
             <span className="flex px-4 py-4">
                 <span className="flex self-center">
-                    <Image class="inline object-cover mr-0.5 rounded-full" src={stash.creator.userImage} alt={stash.creator.username} width={34} height={34} />
+                    <Image className="inline object-cover mr-0.5 rounded-full" src={stash.creator.userImage} alt={stash.creator.username} width={34} height={34} />
                 </span>
                 <span className="flex flex-col pl-2.5 self-center">
                     <span className="text-black dark:text-white font-poppins font-semibold text-sm tracking-wide">

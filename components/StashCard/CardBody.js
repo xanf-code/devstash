@@ -1,9 +1,8 @@
-import { Img } from "@chakra-ui/react"
-
+/* eslint-disable @next/next/no-img-element */
 function CardBody({ stash }) {
     return (
         <div>
-            <Img src={stash.image} alt={stash.username} />
+            <img src={stash.image} alt={stash.username} />
         </div>
     )
 }

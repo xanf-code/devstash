@@ -3,7 +3,6 @@ import SidebarComponent from '../components/SidebarComponent'
 import { Component } from 'react';
 import themeStore from "../store/darkMode";
 import { v4 as uuidv4 } from 'uuid';
-import { ChakraProvider } from "@chakra-ui/react"
 import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@apollo/client'
 
 let userUUID = uuidv4();
@@ -47,13 +46,11 @@ export default class Layout extends Component {
     render() {
         return (
             <ApolloProvider client={client}>
-                <ChakraProvider>
-                    <div className="dark:bg-black bg-white duration-200">
-                        <HeaderElement />
-                        <SidebarComponent />
-                        {this.props.children}
-                    </div>
-                </ChakraProvider>
+                <div className="dark:bg-black bg-white duration-200">
+                    <HeaderElement />
+                    <SidebarComponent />
+                    {this.props.children}
+                </div>
             </ApolloProvider>
         )
     }
