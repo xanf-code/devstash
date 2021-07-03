@@ -4,7 +4,7 @@ function CardFooter({ stash }) {
 
     return (
         <div>
-            <div className="lg:pt-4 pb-4 pl-4 pr-4">
+            <div className="pt-4 pb-4 pl-4 pr-4">
                 <div className="flex justify-between">
                     <ul className="flex justify-evenly">
                         <li className="pr-4">

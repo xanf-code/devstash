@@ -24,7 +24,7 @@ function CardHeader({ stash }) {
                     #{stash.tag.toUpperCase()}
                 </h1>
             </div>
-            <h1 className="px-4 pb-2 lg:pb-3 text-black dark:text-white font-poppins font-semibold leading-relaxed tracking-wide">
+            <h1 className="px-4 pb-3 text-black dark:text-white font-poppins font-semibold leading-relaxed tracking-wide">
                 {stash.title}
             </h1>
         </div>
