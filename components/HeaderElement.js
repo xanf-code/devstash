@@ -2,8 +2,10 @@ import Link from "next/link";
 import { useEffect } from "react";
 import themeStore from "../store/darkMode";
 import navStore from "../store/menuStore";
-import { signOut, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import Image from 'next/image'
+import { Menu } from '@headlessui/react'
+import Button from '../components/Buttons/Button'
 
 export default function HeaderElement() {
 
@@ -27,20 +29,34 @@ export default function HeaderElement() {
             <div className="flex flex-row justify-between items-center py-3 md:flex-row px-4 container max-w-5xl mx-auto">
                 <Link href="/">
                     <a>
-                        <span className="font-open-sans font-black text-xl md:text-3xl drop-shadow-sm text-gradient bg-gradient-to-r from-[#780206] to-[#061161] dark:from-[#ddd6f3] dark:to-[#faaca8]">
+                        <span className="font-open-sans font-black text-xl md:text-3xl drop-shadow-sm text-gradient select-none bg-gradient-to-r from-[#780206] to-[#061161] dark:from-[#ddd6f3] dark:to-[#faaca8]">
                             #DevStash
                         </span>
                     </a>
                 </Link>
                 <div className="flex">
                     <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
-                        {session && (
-                            <div className="invisible lg:visible">
-                                <span className="flex self-center lg:cursor-pointer">
-                                    <Image className="inline object-cover mr-0.5 rounded-full" src={session.user.image} alt={session.user.name} width={30} height={30} />
-                                </span>
-                            </div>
-                        )}
+                        <div className="hidden lg:block">
+                            {session ? (
+                                <Menu as="span" className="lg:cursor-pointer invisible lg:visible lg:relative lg:flex-col lg:self-center">
+                                    <Menu.Button className="self-center flex select-none">
+                                        <Image className="inline object-cover mr-0.5 rounded-full self-center" src={session.user.image} alt={session.user.name} width={30} height={30} />
+                                    </Menu.Button>
+                                    <Menu.Items className="absolute bg-white mt-3">
+                                        <div>
+                                            <h1>bookmark</h1>
+                                        </div>
+                                        <div onClick={signOut}>
+                                            <h1>sign out</h1>
+                                        </div>
+                                    </Menu.Items>
+                                </Menu>
+
+                            ) : (
+                                <Button clickhandler={signIn} class="border-[0.5px] dark:border-gray-600 dark:hover:border-[#0078ff] rounded-[5px] lg:cursor-pointer hover:border-[#0078ff] duration-300"
+                                    textClass="select-none px-2 py-1 text-black dark:text-white font-poppins font-medium text-sm" text="Sign in" />
+                            )}
+                        </div>
                         <div onClick={toggleTheme} className="self-center pl-4 pr-1 lg:cursor-pointer">
                             {!dark ? <svg
                                 className='text-gray-600'

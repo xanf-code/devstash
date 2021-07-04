@@ -61,7 +61,7 @@ export default function SecondarySidebar() {
             {menuData.map((value, index) => {
                 return <Link key={index} href={value.route}>
                     <a onClick={toggleNav} className={`hover:bg-blue-100 dark:hover:bg-gray-900 rounded-md my-1 dark:text-white text-[#8739F9] ${value.route === pageURL ? "bg-blue-100 dark:bg-gray-900" : ""}`}>
-                        < div onClick={() => activeNav(value.route)} className="font-poppins font-semibold p-2">
+                        < div onClick={() => activeNav(value.route)} className="select-none font-poppins font-semibold p-2">
                             {value.name}
                         </div>
                     </a>
@@ -69,7 +69,7 @@ export default function SecondarySidebar() {
             })}
             {!session && (
                 <div className="mt-1.5">
-                    <Button clickhandler={signIn} class="bg-[#0078ff] rounded-md lg:cursor-pointer" textClass="p-2 text-white font-poppins font-semibold flex justify-center self-center" text="SignIn" />
+                    <Button clickhandler={signIn} class="bg-[#0078ff] rounded-md lg:cursor-pointer" textClass="p-2 text-white font-poppins font-semibold flex justify-center self-center" text="Sign in" />
                 </div>
             )}
             {session && (

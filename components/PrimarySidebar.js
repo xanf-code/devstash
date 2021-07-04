@@ -5,16 +5,16 @@ import getTag from "../store/getTag";
 import navStore from "../store/menuStore";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
+import ClearComponent from "./Desktop/ClearComponent";
+import setActiveStore from '../store/setActive'
 
 export default function PrimarySidebar() {
-    // const initial = getTag((state) => state.initial);
 
     const router = useRouter()
-
     const [sorted, setSort] = useState([]);
-
     const toggleNav = navStore(state => state.toggleNav);
     const tagClick = getTag((state) => state.tagClick);
+    const active = setActiveStore(state => state.active);
 
     const { loading, data } = useQuery(FETCH_TAGS_QUERY, {
         variables: {
@@ -46,6 +46,12 @@ export default function PrimarySidebar() {
         }
         await tagClick(data);
         toggleNav();
+        setClearLog(data)
+    }
+
+    const setClearLog = (text) => {
+        tagClick(text)
+        setActiveStore.setState({ active: !active })
     }
 
     return (
@@ -54,11 +60,16 @@ export default function PrimarySidebar() {
                 <h1 className="font-montserrat text-base font-bold text-black dark:text-white mb-1">
                     Trending Stash⚡📈
                 </h1>
+                <div className="mb-2">
+                    {active && (
+                        <ClearComponent />
+                    )}
+                </div>
                 <div className="flex flex-wrap">
                     {data && !loading ? (
-                        sorted.map((data) => {
+                        sorted.map((data, index) => {
                             return (
-                                <div className="select-none" key={data.id}>
+                                <div className="select-none" key={index}>
                                     <div onClick={() => toggle(data.tag)}>
                                         <TrendingComponent trendingData={data} />
                                     </div>

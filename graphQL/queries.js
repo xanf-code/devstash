@@ -53,4 +53,14 @@ const LIKE_POST_QUERY = gql`
   }
 `;
 
-module.exports = { FETCH_TAGS_QUERY, FETCH_POSTS_QUERY, LIKE_POST_QUERY };
+const TAGS_QUERY = gql`
+  query getAllPosts {
+    getAllPosts {
+      id
+      tag
+      title
+    }
+  }
+`;
+
+module.exports = { FETCH_TAGS_QUERY, FETCH_POSTS_QUERY, LIKE_POST_QUERY, TAGS_QUERY };

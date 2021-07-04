@@ -1,11 +1,18 @@
 import getTag from "../../store/getTag";
+import setActiveStore from '../../store/setActive'
 
 export default function ClearComponent() {
 
     const clear = getTag((state) => state.clear);
+    const active = setActiveStore(state => state.active);
+
+    const onClear = () => {
+        clear();
+        setActiveStore.setState({ active: !active })
+    }
 
     return (
-        <div onClick={() => clear()} className="lg:cursor-pointer flex pr-2">
+        <div onClick={() => onClear()} className="lg:cursor-pointer flex pr-2">
             <svg
                 className="self-center pr-1 text-[#5790cf]"
                 height="12"
