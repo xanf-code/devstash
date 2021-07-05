@@ -6,7 +6,7 @@ function Layout() {
     const changeLayout = setLayout(state => state.changeLayout);
 
     return (
-        <div className="mr-1 rounded-md self-center bg-[#e3edf9] dark:bg-[#19181f]">
+        <div className="mr-1 rounded-md self-center bg-[#fafafa] dark:bg-[#19181f]">
             <div className="p-1.5 select-none" onClick={changeLayout}>
                 {compact ? (
                     <svg className="text-gray-500" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 5H22V3H2V5Z" fill="currentColor" /><path d="M2 21H22V19H2V21Z" fill="currentColor" /><path fillRule="evenodd" clipRule="evenodd" d="M2 7V17H22V7H2ZM4 9H20V15H4V9Z" fill="currentColor" /></svg>

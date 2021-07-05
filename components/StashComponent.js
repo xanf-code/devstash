@@ -1,29 +1,32 @@
 import MasonryCard from "./StashCard/Masonry";
 import TrendingDesktop from "./Desktop/TrendingComponent";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useStore from "../store/pagination";
-import Modal from './Sheet/Modal'
+import Modal from "./Sheet/Modal";
 import PageHeader from "./Desktop/PageHeader";
-import getTag from "../store/getTag"
+import getTag from "../store/getTag";
 import { useQuery } from "@apollo/client";
 import { FETCH_POSTS_QUERY } from "../graphQL/queries";
 import Search from "./Search/Search";
 import Layout from "./Mobile/Layout";
+import setSearch from "../store/searchpop";
 
 export default function StashComponent() {
 
-    const setInitital = useStore(state => state.setInitital);
-    const [value, setValue] = useState('-createdAt');
+    const showSearch = setSearch((state) => state.showSearch);
+    const searchActive = setSearch((state) => state.searchActive);
+    const setInitital = useStore((state) => state.setInitital);
+    const [value, setValue] = useState("-createdAt");
     const [show, setShow] = useState(false);
-    const initial = getTag(state => state.initial);
+    const initial = getTag((state) => state.initial);
 
     const { loading, data, fetchMore } = useQuery(FETCH_POSTS_QUERY, {
         variables: {
             limit: 10,
             page: 1,
             sortBy: value,
-            tag: initial
-        }
+            tag: initial,
+        },
     });
 
     const menu = [
@@ -31,24 +34,24 @@ export default function StashComponent() {
             name: "Recents",
             value: "-createdAt",
             active: value,
-            light: 'new',
-            dark: 'new'
+            light: "new",
+            dark: "new",
         },
         {
             name: "Most Stashed",
             value: "-likeCount",
             active: value,
-            light: 'rocket',
-            dark: 'rocket'
+            light: "rocket",
+            dark: "rocket",
         },
         {
             name: "Most Viewed",
             value: "-viewCount",
             active: value,
-            light: 'eye',
-            dark: 'eye'
+            light: "eye",
+            dark: "eye",
         },
-    ]
+    ];
 
     function onTrigger(value) {
         setValue(value);
@@ -57,18 +60,18 @@ export default function StashComponent() {
 
     function sheetTrigger(value) {
         onTrigger(value);
-        setShow(false)
+        setShow(false);
     }
 
     const switcher = (text) => {
-        if (text === '-createdAt') {
-            return "Recents"
-        } else if (text === '-likeCount') {
-            return "Most Stashed"
+        if (text === "-createdAt") {
+            return "Recents";
+        } else if (text === "-likeCount") {
+            return "Most Stashed";
         } else {
-            return "Most Viewed"
+            return "Most Viewed";
         }
-    }
+    };
 
     return (
         <div className="flex-0 lg:flex">
@@ -86,37 +89,62 @@ export default function StashComponent() {
                         </div>
                     </div>
                     <div className="lg:hidden">
-                        <div className="w-full bg-[#fafafa] dark:bg-[#151617] mb-3 rounded-md">
-                            <Search />
-                        </div>
+                        {/* {searchActive && (
+                            <div className="w-full bg-[#fafafa] dark:bg-[#151617] mb-3 rounded-md">
+                                <Search />
+                            </div>
+                        )} */}
                         <div className="flex justify-between mb-3">
                             {/* Layout component on mobile */}
-                            <div className="rounded-md bg-[#fafafa]
-                            dark:bg-[#151617]" onClick={() => setShow(!show)}>
-                                <div className="flex py-2 px-3">
-                                    <h1 className="font-montserrat font-semibold text-sm mr-2 text-black dark:text-white">{switcher(value)}</h1>
-                                    <svg
-                                        className="self-center text-black dark:text-white"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
-                                            fill="currentColor"
-                                        />
-                                    </svg>
-                                </div>
+                            <div onClick={showSearch} className="ml-1.5 self-center w-[50%]">
+                                <h1 className="truncate font-montserrat font-bold text-black dark:text-white">
+                                    {initial === "" ? "All Stash" : initial}
+                                </h1>
                             </div>
-                            <Layout />
+                            <div className="flex">
+                                <div
+                                    className="mr-2 rounded-md bg-[#fafafa]
+                            dark:bg-[#151617]"
+                                    onClick={() => setShow(!show)}
+                                >
+                                    <div className="flex py-2 px-3">
+                                        <h1 className="font-montserrat font-semibold text-sm mr-2 text-black dark:text-white">
+                                            {switcher(value)}
+                                        </h1>
+                                        <svg
+                                            className="self-center text-black dark:text-white"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
+                                                fill="currentColor"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <Layout />
+                            </div>
                         </div>
                     </div>
-                    <MasonryCard value={value} fetchMore={fetchMore} data={data} loading={loading} initial={initial} />
+                    <MasonryCard
+                        value={value}
+                        fetchMore={fetchMore}
+                        data={data}
+                        loading={loading}
+                        initial={initial}
+                    />
                 </div>
             </div>
-            <Modal show={show} setShow={setShow} menu={menu} sheetTrigger={sheetTrigger} />
+            <Modal
+                show={show}
+                setShow={setShow}
+                menu={menu}
+                sheetTrigger={sheetTrigger}
+            />
         </div>
     );
 }
