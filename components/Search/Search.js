@@ -10,7 +10,6 @@ export default function Search() {
     const clear = getTag((state) => state.clear);
     const tagClick = getTag(state => state.tagClick);
     const maintext = setTextStore(state => state.maintext);
-    const active = setActiveStore(state => state.active);
     const [suggestion, setSuggestion] = useState([]);
     const { loading, data } = useQuery(TAGS_QUERY);
 
@@ -58,7 +57,7 @@ export default function Search() {
     return (
         <div className="relative flex-1 self-center">
             <div className="flex">
-                <input className="w-full h-full bg-transparent b-0 p-2 outline-none text-black dark:text-white font-poppins font-semibold ml-2 mr-4"
+                <input className="w-full h-full bg-transparent b-0 p-2 outline-none text-black dark:text-white font-poppins font-medium lg:font-semibold ml-2 mr-4"
                     type="text"
                     value={maintext}
                     placeholder="Search here"
@@ -72,7 +71,7 @@ export default function Search() {
                 {maintext != "" && (
                     <svg
                         onClick={showClear}
-                        className="self-center cursor-pointer text-gray-500"
+                        className="self-center cursor-pointer text-gray-500 mr-3 lg:mr-0"
                         width="16"
                         height="16"
                         viewBox="0 0 24 24"

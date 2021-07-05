@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import ClearComponent from "./Desktop/ClearComponent";
 import setActiveStore from '../store/setActive'
+import setTextStore from '../store/setText'
 
 export default function PrimarySidebar() {
 
@@ -51,6 +52,7 @@ export default function PrimarySidebar() {
 
     const setClearLog = (text) => {
         tagClick(text)
+        setTextStore.setState({ maintext: "" })
         setActiveStore.setState({ active: !active })
     }
 

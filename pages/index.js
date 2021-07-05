@@ -12,10 +12,13 @@ export default function Home() {
       <div className="lg:pt-0 px-6 lg:px-0 min-h-screen w-full m-auto text-center lg:w-6/12">
         <MainContent />
       </div>
-      {/* <footer className="bg-black w-[100%] h-2/3">
-        <h1>FOOTER HERE</h1>
+      {/* <footer className="w-[100%]">
+        <div className="grid grid-cols-2">
+          <h1>Column 1</h1>
+          <h1>Column 2</h1>
+        </div>
       </footer> */}
-    </div>
+    </div >
   );
 }
 export async function getServerSideProps(ctx) {

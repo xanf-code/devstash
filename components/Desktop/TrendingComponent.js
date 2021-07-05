@@ -13,7 +13,6 @@ export default function TrendingDesktop() {
     // const initial = getTag((state) => state.initial);
     const tagClick = getTag((state) => state.tagClick);
     const active = setActiveStore(state => state.active);
-    const maintext = setTextStore(state => state.maintext);
 
     const { loading, data } = useQuery(FETCH_TAGS_QUERY, {
         variables: {

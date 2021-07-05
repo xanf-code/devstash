@@ -8,6 +8,7 @@ import getTag from "../store/getTag"
 import { useQuery } from "@apollo/client";
 import { FETCH_POSTS_QUERY } from "../graphQL/queries";
 import Search from "./Search/Search";
+import Layout from "./Mobile/Layout";
 
 export default function StashComponent() {
 
@@ -84,12 +85,12 @@ export default function StashComponent() {
                             </div>
                         </div>
                     </div>
-                    <div className="lg:hidden mb-3">
-                        <div className="flex justify-between">
-                            {/* Search component on mobile */}
-                            <div>
-                                search
-                            </div>
+                    <div className="lg:hidden">
+                        <div className="w-full bg-[#fafafa] dark:bg-[#151617] mb-3 rounded-md">
+                            <Search />
+                        </div>
+                        <div className="flex justify-between mb-3">
+                            {/* Layout component on mobile */}
                             <div className="rounded-md bg-[#fafafa]
                             dark:bg-[#151617]" onClick={() => setShow(!show)}>
                                 <div className="flex py-2 px-3">
@@ -109,6 +110,7 @@ export default function StashComponent() {
                                     </svg>
                                 </div>
                             </div>
+                            <Layout />
                         </div>
                     </div>
                     <MasonryCard value={value} fetchMore={fetchMore} data={data} loading={loading} initial={initial} />
