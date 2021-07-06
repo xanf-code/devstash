@@ -75,6 +75,21 @@ export default function StashComponent() {
         }
     };
 
+    const containerAnimation = {
+        hidden: {
+            paddingTop: 0,
+            opacity: 0
+        },
+        visible: {
+            paddingTop: searchActive && searchActive ? 52 : 0,
+            transition: {
+                type: "spring",
+                stiffness: 260,
+                damping: 20
+            }
+        },
+    }
+
     return (
         <div className="flex-0 lg:flex">
             <div className="invisible lg:visible lg:w-[18%]">
@@ -106,13 +121,9 @@ export default function StashComponent() {
                             </AnimatePresence>
                         </div>
                         <motion.div
-                            initial={{ paddingTop: 0, opacity: 0 }}
-                            animate={{ paddingTop: searchActive && searchActive ? 52 : 0 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 260,
-                                damping: 20
-                            }}
+                            variants={containerAnimation}
+                            initial='hidden'
+                            animate='visible'
                             className='flex justify-between mb-3'>
                             {/* Layout component on mobile */}
                             <Filter />
