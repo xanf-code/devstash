@@ -10,6 +10,8 @@ import { FETCH_POSTS_QUERY } from "../graphQL/queries";
 import Search from "./Search/Search";
 import Layout from "./Mobile/Layout";
 import setSearch from "../store/searchpop";
+import Filter from './Mobile/Filter'
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function StashComponent() {
 
@@ -89,14 +91,28 @@ export default function StashComponent() {
                         </div>
                     </div>
                     <div className="lg:hidden">
-                        {/* {searchActive && (
-                            <div className="w-full bg-[#fafafa] dark:bg-[#151617] mb-3 rounded-md">
-                                <Search />
-                            </div>
-                        )} */}
-                        <div className="flex justify-between mb-3">
+                        <div className="relative z-10">
+                            <AnimatePresence>
+                                {searchActive && (
+                                    <motion.div
+                                        initial={{ x: -100 }}
+                                        animate={{ x: 0 }}
+                                        exit={{ x: -100, opacity: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 260,
+                                            damping: 20
+                                        }}
+                                        className="w-full absolute bg-[#fafafa] dark:bg-[#151617] mb-3 rounded-md">
+                                        <Search />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                        <div className={`flex justify-between mb-3 ${searchActive ? 'pt-[52px]' : 'pt-0'}`}>
                             {/* Layout component on mobile */}
-                            <div onClick={showSearch} className="ml-1.5 self-center w-[50%]">
+                            <Filter />
+                            <div className="ml-1.5 self-center w-[50%]">
                                 <h1 className="truncate font-montserrat font-bold text-black dark:text-white">
                                     {initial === "" ? "All Stash" : initial}
                                 </h1>

@@ -57,7 +57,7 @@ export default function Search() {
     return (
         <div className="relative flex-1 self-center">
             <div className="flex">
-                <input className="w-full h-full bg-transparent b-0 p-2 outline-none text-black dark:text-white font-poppins font-medium lg:font-semibold ml-2 mr-4"
+                <input className="w-full h-full bg-transparent b-0 p-2 outline-none text-black dark:text-white font-poppins font-medium lg:font-semibold ml-2 lg:mr-4"
                     type="text"
                     value={maintext}
                     placeholder="Search here"
