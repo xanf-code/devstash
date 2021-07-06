@@ -1,6 +1,6 @@
 import MasonryCard from "./StashCard/Masonry";
 import TrendingDesktop from "./Desktop/TrendingComponent";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useStore from "../store/pagination";
 import Modal from "./Sheet/Modal";
 import PageHeader from "./Desktop/PageHeader";
@@ -12,10 +12,10 @@ import Layout from "./Mobile/Layout";
 import setSearch from "../store/searchpop";
 import Filter from './Mobile/Filter'
 import { AnimatePresence, motion } from "framer-motion";
+import { searchBarAnimation } from './Animations/SearchBar'
 
 export default function StashComponent() {
 
-    const showSearch = setSearch((state) => state.showSearch);
     const searchActive = setSearch((state) => state.searchActive);
     const setInitital = useStore((state) => state.setInitital);
     const [value, setValue] = useState("-createdAt");
@@ -95,25 +95,29 @@ export default function StashComponent() {
                             <AnimatePresence>
                                 {searchActive && (
                                     <motion.div
-                                        initial={{ x: -100 }}
-                                        animate={{ x: 0 }}
-                                        exit={{ x: -100, opacity: 0 }}
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 260,
-                                            damping: 20
-                                        }}
+                                        initial='hidden'
+                                        animate='visible'
+                                        exit='exit'
+                                        variants={searchBarAnimation}
                                         className="w-full absolute bg-[#fafafa] dark:bg-[#151617] mb-3 rounded-md">
                                         <Search />
                                     </motion.div>
                                 )}
                             </AnimatePresence>
                         </div>
-                        <div className={`flex justify-between mb-3 ${searchActive ? 'pt-[52px]' : 'pt-0'}`}>
+                        <motion.div
+                            initial={{ paddingTop: 0, opacity: 0 }}
+                            animate={{ paddingTop: searchActive && searchActive ? 52 : 0 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 260,
+                                damping: 20
+                            }}
+                            className='flex justify-between mb-3'>
                             {/* Layout component on mobile */}
                             <Filter />
                             <div className="ml-1.5 self-center w-[50%]">
-                                <h1 className="truncate font-montserrat font-bold text-black dark:text-white">
+                                <h1 className="self-center truncate font-montserrat font-bold text-black dark:text-white">
                                     {initial === "" ? "All Stash" : initial}
                                 </h1>
                             </div>
@@ -144,7 +148,7 @@ export default function StashComponent() {
                                 </div>
                                 <Layout />
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                     <MasonryCard
                         value={value}
