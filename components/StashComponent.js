@@ -78,7 +78,6 @@ export default function StashComponent() {
     const containerAnimation = {
         hidden: {
             paddingTop: 0,
-            opacity: 0
         },
         visible: {
             paddingTop: searchActive && searchActive ? 52 : 0,
