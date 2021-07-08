@@ -36,7 +36,7 @@ export default function HeaderElement() {
                 </Link>
                 <div className="flex">
                     <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
-                        <div className="hidden lg:block">
+                        <div className="">
                             {session ? (
                                 <Menu as="span" className="lg:cursor-pointer invisible lg:visible lg:relative lg:flex-col lg:self-center">
                                     <Menu.Button className="self-center flex select-none">

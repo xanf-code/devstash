@@ -125,11 +125,13 @@ export default function StashComponent() {
                             animate='visible'
                             className='flex justify-between mb-3'>
                             {/* Layout component on mobile */}
-                            <Filter />
-                            <div className="self-center w-[30%]">
-                                <h1 className="self-center truncate font-montserrat font-bold text-black dark:text-white">
-                                    {initial === "" ? "All Stash" : initial}
-                                </h1>
+                            <div className="flex truncate w-[40%]">
+                                <Filter />
+                                <div className="ml-2.5 self-center">
+                                    <h1 className="self-center font-montserrat font-bold text-black dark:text-white">
+                                        {initial === "" ? "All Stash" : initial}
+                                    </h1>
+                                </div>
                             </div>
                             <div className="flex">
                                 <div
