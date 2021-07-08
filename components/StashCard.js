@@ -4,14 +4,22 @@ import CardBody from '../components/StashCard/CardBody'
 import CardFooter from '../components/StashCard/CardFooter'
 import { useMutation } from "@apollo/client";
 import { VIEW_POST_QUERY } from "../graphQL/queries";
+import { useState, useEffect } from 'react'
 
 export default function StashCard({ stash }) {
 
-    const id = localStorage.getItem('uuid');
+    const [uid, setUID] = useState(null);
+
+    useEffect(() => {
+        if (localStorage) {
+            const id = localStorage.getItem('uuid');
+            setUID(id);
+        }
+    }, [])
 
     const [viewPost] = useMutation(VIEW_POST_QUERY, {
         variables: {
-            userID: id && id,
+            userID: uid,
             postID: stash.id,
         },
     });

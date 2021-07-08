@@ -1,5 +1,6 @@
 import LikeButton from './LikeButton'
 import setLayout from "../../store/setLayout"
+import AnimatedNumber from "react-animated-numbers"
 
 function CardFooter({ stash }) {
 
@@ -16,10 +17,15 @@ function CardFooter({ stash }) {
                     <div className="flex justify-evenly">
                         <span className="pr-4 flex self-center">
                             <LikeButton stash={stash} />
-                            <h1 className="text-black dark:text-white font-poppins font-semibold self-center text-sm">
-                                {kFormatter(stash.likeCount)}
-                            </h1>
-                            <h1 className="ml-1.5 text-black dark:text-white font-poppins font-semibold text-sm self-center">
+                            <div className="text-black dark:text-white font-poppins font-semibold self-center text-sm">
+                                <AnimatedNumber
+                                    animateToNumber={kFormatter(stash.likeCount)}
+                                    config={{ tension: 100, friction: 10 }}
+                                    animationType={"random"}
+                                />
+                            </div>
+
+                            <h1 className="ml-1 text-black dark:text-white font-poppins font-semibold text-sm self-center">
                                 STASHED
                             </h1>
                         </span>
