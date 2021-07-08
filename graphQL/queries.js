@@ -63,4 +63,19 @@ const TAGS_QUERY = gql`
   }
 `;
 
-module.exports = { FETCH_TAGS_QUERY, FETCH_POSTS_QUERY, LIKE_POST_QUERY, TAGS_QUERY };
+const VIEW_POST_QUERY = gql`
+  mutation addView($userID: String!, $postID: ID!) {
+    addView(userID: $userID, postID: $postID) {
+      id
+      viewCount
+    }
+  }
+`;
+
+module.exports = {
+  FETCH_TAGS_QUERY,
+  FETCH_POSTS_QUERY,
+  LIKE_POST_QUERY,
+  TAGS_QUERY,
+  VIEW_POST_QUERY,
+};
