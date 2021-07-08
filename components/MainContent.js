@@ -23,7 +23,7 @@ export default function MainContent() {
                     </span></h1>
                 <h1 className="select-none text-gray-600 dark:text-gray-400 font-semibold text-base md:text-xl font-montserrat leading-relaxed">There are lots of tools to choose from, and it’s hard to find the right ones. That’s why I created this list – so you save time by easily finding the best stuff out there.</h1>
                 <div className="shadow-md m-auto mt-4 hover:-translate-y-0.5">
-                    <Button clickhandler={handleClick} class="duration-200 hover:shadow-lg border-[1px] dark:border-white border-black w-full bg-white dark:bg-black rounded-md lg:cursor-pointer" textClass="select-none p-2 text-black dark:text-white font-poppins font-semibold self-center" text="Get Started" />
+                    <Button clickhandler={handleClick} class="duration-200 hover:shadow-lg w-full bg-gradient-to-r from-[#b92b27] to-[#1565C0]  rounded-md lg:cursor-pointer" textClass="select-none p-2 text-white font-poppins font-semibold self-center" text="Get Started" />
                 </div>
             </section>
         </main>

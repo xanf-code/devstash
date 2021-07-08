@@ -69,12 +69,12 @@ export default function SecondarySidebar() {
             })}
             {!session && (
                 <div className="mt-1.5">
-                    <Button clickhandler={signIn} class="bg-[#0078ff] rounded-md lg:cursor-pointer" textClass="p-2 text-white font-poppins font-semibold flex justify-center self-center" text="Sign in" />
+                    <Button clickhandler={signIn} class="duration-200 hover:shadow-lg w-full bg-gradient-to-r from-[#b92b27] to-[#1565C0]  rounded-md lg:cursor-pointer" textClass="select-none p-2 text-white font-poppins flex justify-center font-semibold self-center" text="Sign in" />
                 </div>
             )}
             {session && (
                 <div className="lg:hidden mt-1.5">
-                    <Button clickhandler={signOut} class="bg-[#0078ff] rounded-md lg:cursor-pointer" textClass="p-2 text-white font-poppins font-semibold flex justify-center self-center" text="Sign Out" />
+                    <Button clickhandler={signOut} class="duration-200 hover:shadow-lg w-full bg-gradient-to-r from-[#b92b27] to-[#1565C0]  rounded-md lg:cursor-pointer" textClass="select-none p-2 text-white font-poppins flex justify-center font-semibold self-center" text="Sign Out" />
                 </div>
             )}
         </div >
