@@ -1,5 +1,4 @@
 import StashCard from "../../components/StashCard";
-import { useSession } from 'next-auth/client';
 import Masonry from 'react-masonry-css'
 import { Waypoint } from 'react-waypoint';
 import React from "react";
@@ -11,7 +10,6 @@ export default function MasonryCard({ value,
     loading,
     initial }) {
 
-    const [session] = useSession();
     const initialPage = useStore(state => state.initialPage);
     const increment = useStore(state => state.increment);
 
@@ -36,7 +34,7 @@ export default function MasonryCard({ value,
                     >
                         {data.getPosts.posts.map((stash, index) => (
                             <React.Fragment key={index}>
-                                <StashCard stash={stash} session={session} />
+                                <StashCard stash={stash} />
                                 {index === data.getPosts.posts.length - 5 && (
                                     <Waypoint onEnter={() => {
                                         const hasMore = data.getPosts.hasNext;

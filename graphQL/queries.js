@@ -72,10 +72,28 @@ const VIEW_POST_QUERY = gql`
   }
 `;
 
+const ADD_BOOKMARKS = gql`
+  mutation addBookmark($userID: String!, $postID: String!) {
+    addBookmark(userID: $userID, postID: $postID) {
+      id
+      bookmarks
+    }
+  }
+`;
+
+const GET_BOOKED = gql`
+query getUser($userID: ID!) {
+  getUser(userID: $userID) {
+    bookmarks
+  }
+}
+`
 module.exports = {
   FETCH_TAGS_QUERY,
   FETCH_POSTS_QUERY,
   LIKE_POST_QUERY,
   TAGS_QUERY,
   VIEW_POST_QUERY,
+  ADD_BOOKMARKS,
+  GET_BOOKED
 };

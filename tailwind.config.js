@@ -9,9 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'montserrat': ['Montserrat'],
-        'lato': ['Lato'],
         'poppins': ['Poppins'],
-        'open-sans': ['"Open Sans"'],
       },
       colors: {},
     },

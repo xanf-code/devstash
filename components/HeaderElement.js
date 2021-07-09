@@ -29,7 +29,7 @@ export default function HeaderElement() {
             <div className="flex flex-row justify-between items-center py-3 md:flex-row px-4 container max-w-5xl mx-auto">
                 <Link href="/">
                     <a>
-                        <span className="font-open-sans font-black text-xl md:text-3xl drop-shadow-sm text-gradient select-none bg-gradient-to-r from-[#780206] to-[#061161] dark:from-[#ddd6f3] dark:to-[#faaca8]">
+                        <span className="font-poppins font-bold text-xl md:text-3xl drop-shadow-sm text-gradient select-none bg-gradient-to-r from-[#780206] to-[#061161] dark:from-[#ddd6f3] dark:to-[#faaca8]">
                             #DevStash
                         </span>
                     </a>
@@ -43,9 +43,11 @@ export default function HeaderElement() {
                                         <Image className="inline object-cover mr-0.5 rounded-full self-center" src={session.user.image} alt={session.user.name} width={30} height={30} />
                                     </Menu.Button>
                                     <Menu.Items className="absolute bg-white mt-3">
-                                        <div>
-                                            <h1>bookmark</h1>
-                                        </div>
+                                        <Link href="/bookmarks">
+                                            <a>
+                                                <h1>bookmark</h1>
+                                            </a>
+                                        </Link>
                                         <div onClick={signOut}>
                                             <h1>sign out</h1>
                                         </div>

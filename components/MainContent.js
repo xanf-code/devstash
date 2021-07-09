@@ -13,7 +13,7 @@ export default function MainContent() {
 
     return (
         <main>
-            <section className="pt-[40%] lg:pt-[20%] min-h-screen m-auto">
+            <div className="pt-[40%] lg:pt-[20%] m-auto">
                 <h1 className=" text-blue-600 text-lg font-bold font-montserrat uppercase tracking-widest select-none">#devstash</h1>
                 <h1 className="select-none tracking-tighter md:tracking-tight dark:text-white font-bold leading-none text-[50px] md:text-5xl xl:text-6xl font-montserrat mb-2"> A list of
                     coding resources for noobies and new devs <span>
@@ -25,7 +25,7 @@ export default function MainContent() {
                 <div className="shadow-md m-auto mt-4 hover:-translate-y-0.5">
                     <Button clickhandler={handleClick} class="duration-200 hover:shadow-lg w-full bg-gradient-to-r from-[#b92b27] to-[#1565C0]  rounded-md lg:cursor-pointer" textClass="select-none p-2 text-white font-poppins font-semibold self-center" text="Get Started" />
                 </div>
-            </section>
+            </div>
         </main>
     )
 }
