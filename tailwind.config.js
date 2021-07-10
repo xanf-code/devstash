@@ -7,6 +7,9 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: (theme) => ({
+        'app-bg': "url('../assets/bg.webp')",
+      }),
       fontFamily: {
         'montserrat': ['Montserrat'],
         'poppins': ['Poppins'],
