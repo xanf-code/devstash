@@ -1,16 +1,17 @@
 import create from 'zustand';
-import { devtools } from 'zustand/middleware';
 
-let theme = set => ({
-    uuid: '',
+let theme = (set, get) => ({
     dark: false,
-    toggleTheme: () => set(state => ({
-        dark: !state.dark
-    })),
+    toggleDark: () => {
+        set(state => ({ dark: !state.dark }))
+        const darkupdated = get().dark
+        if (darkupdated) {
+            localStorage.setItem("theme", darkupdated);
+        } else {
+            localStorage.setItem("theme", darkupdated);
+        }
+    }
 })
-
-theme = devtools(theme)
-theme = devtools(theme)
 
 const themeStore = create(theme)
 

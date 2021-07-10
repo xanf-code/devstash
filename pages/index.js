@@ -3,6 +3,7 @@ import MainContent from "../components/MainContent";
 import { getSession } from 'next-auth/client';
 
 export default function Home() {
+
   return (
     <div>
       <Head>

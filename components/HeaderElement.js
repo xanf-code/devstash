@@ -11,21 +11,20 @@ export default function HeaderElement() {
 
     const [session, loading] = useSession();
     const dark = themeStore(state => state.dark)
-    const toggleTheme = themeStore(state => state.toggleTheme)
+    const toggleDark = themeStore(state => state.toggleDark)
     const toggleNav = navStore(state => state.toggleNav)
 
     useEffect(() => {
+        const root = window.document.documentElement;
         if (dark) {
-            document.querySelector('body').classList.add('dark')
-            localStorage.setItem("theme", dark);
+            root.classList.add('dark')
         } else {
-            document.querySelector('body').classList.remove('dark')
-            localStorage.setItem("theme", dark);
+            root.classList.remove('dark')
         }
     }, [dark])
 
     return (
-        <header className="duration-200 bg-[#fff] border-b-2 border-gray-100 dark:border-gray-900 dark:bg-black z-50 fixed w-screen">
+        <header className="duration-200 bg-[#fff] border-b-2 border-gray-100 dark:border-gray-900 dark:bg-black z-40 fixed w-screen">
             <div className="flex flex-row justify-between items-center py-3 md:flex-row px-4 container max-w-5xl mx-auto">
                 <Link href="/">
                     <a>
@@ -59,7 +58,7 @@ export default function HeaderElement() {
                                     textClass="select-none px-2 py-1 text-black dark:text-white font-poppins font-medium text-sm" text="Sign in" />
                             )}
                         </div>
-                        <div onClick={toggleTheme} className="self-center pl-4 pr-1 lg:cursor-pointer">
+                        <div onClick={() => toggleDark()} className="self-center pl-4 pr-1 lg:cursor-pointer">
                             {!dark ? <svg
                                 className='text-gray-600'
                                 width="24"
