@@ -37,12 +37,13 @@ export default function HeaderElement() {
                     <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
                         <div className="">
                             {session ? (
-                                <Menu as="span" className="lg:cursor-pointer invisible lg:visible lg:relative lg:flex-col lg:self-center">
+                                /*Removed invisible lg:*/
+                                <Menu as="div" className="lg:cursor-pointer visible lg:relative lg:flex-col lg:self-center">
                                     <Menu.Button className="self-center flex select-none">
                                         <Image className="inline object-cover mr-0.5 rounded-full self-center" src={session.user.image} alt={session.user.name} width={30} height={30} />
                                     </Menu.Button>
                                     <Menu.Items className="absolute bg-white mt-3">
-                                        <Link href="/bookmarks">
+                                        <Link href={`/collection/${session.id}`}>
                                             <a>
                                                 <h1>bookmark</h1>
                                             </a>

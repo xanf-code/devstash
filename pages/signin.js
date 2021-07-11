@@ -40,6 +40,9 @@ export default function SignIn({ providers }) {
     )
 }
 
+/* Might Change Later */
+//* Documentation says getServerSideProps *//
+
 SignIn.getInitialProps = async (context) => {
     const { req, res } = context;
     const session = await getSession({ req });

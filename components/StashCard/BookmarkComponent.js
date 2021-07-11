@@ -18,14 +18,14 @@ export default function BookmarkComponent({ stash: { id } }) {
     });
 
     useEffect(() => {
-        if (data && data.getUser.bookmarks.includes(id)) {
+        if (data && data.getUser.bookmarks.bookmark.includes(id)) {
             setBookmark(true);
         } else {
             setBookmark(false);
         }
-    }, [data, id, sessionID]);
+    }, [data, id, sessionID, error]);
 
-    const [bookmarkpost] = useMutation(ADD_BOOKMARKS, {
+    const [bookmarkpost, { error }] = useMutation(ADD_BOOKMARKS, {
         variables: {
             userID: sessionID,
             postID: id,
@@ -38,9 +38,17 @@ export default function BookmarkComponent({ stash: { id } }) {
         }]
     });
 
+    const addCollection = () => {
+        if (sessionID != null) {
+            bookmarkpost()
+        } else {
+            signIn()
+        }
+    }
+
     return (
         <div
-            onClick={sessionID != null ? bookmarkpost : signIn}
+            onClick={() => addCollection()}
             className="hover:bg-[#e3edf9] dark:hover:bg-[#151617] rounded-md p-1.5 duration-300"
         >
             <span onClick={() => {

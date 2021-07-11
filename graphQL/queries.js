@@ -76,7 +76,9 @@ const ADD_BOOKMARKS = gql`
   mutation addBookmark($userID: String!, $postID: String!) {
     addBookmark(userID: $userID, postID: $postID) {
       id
-      bookmarks
+      bookmarks{
+        bookmark
+      }
     }
   }
 `;
@@ -84,10 +86,45 @@ const ADD_BOOKMARKS = gql`
 const GET_BOOKED = gql`
 query getUser($userID: ID!) {
   getUser(userID: $userID) {
-    bookmarks
+    bookmarks{
+      name
+      public
+      bookmark
+    }
   }
 }
 `
+
+const FETCH_COLLECTION_QUERY = gql`
+query getBookmarksPosts($userID: ID!) {
+    getBookmarksPosts(userID: $userID) {
+    id
+    tag
+    createdAt
+    body
+    title
+    image
+    likes {
+        createdAt
+        username
+        userID
+    }
+    creator {
+        username
+        userImage
+    }
+    likeCount
+    viewCount
+    }
+}
+`
+
+const RENAME_STASH = gql`
+  mutation addStashName($userID: String!, $name: String!) {
+    addStashName(userID: $userID, name: $name)
+  }
+`;
+
 module.exports = {
   FETCH_TAGS_QUERY,
   FETCH_POSTS_QUERY,
@@ -95,5 +132,7 @@ module.exports = {
   TAGS_QUERY,
   VIEW_POST_QUERY,
   ADD_BOOKMARKS,
-  GET_BOOKED
+  GET_BOOKED,
+  FETCH_COLLECTION_QUERY,
+  RENAME_STASH
 };

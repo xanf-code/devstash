@@ -34,7 +34,8 @@ function Layout({ children }) {
 
 
     const httpLink = createHttpLink({
-        uri: 'https://snowy-morning-277.fly.dev/'
+        // uri: 'https://snowy-morning-277.fly.dev/'
+        uri: 'http://localhost:5000/'
     })
 
     const client = new ApolloClient({
