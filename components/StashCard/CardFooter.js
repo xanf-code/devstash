@@ -16,7 +16,7 @@ export default function CardFooter({ stash }) {
                 <div className="flex
                  justify-between">
                     <div className="flex justify-evenly">
-                        <span className="pr-4 flex self-center">
+                        <div className="pr-4 flex self-center">
                             <LikeButton stash={stash} />
                             <div className="text-black dark:text-white font-poppins font-semibold self-center text-sm">
                                 <AnimatedNumber
@@ -25,11 +25,10 @@ export default function CardFooter({ stash }) {
                                     animationType={"random"}
                                 />
                             </div>
-
                             <h1 className="ml-1 text-black dark:text-white font-poppins font-semibold text-sm self-center">
                                 STASHED
                             </h1>
-                        </span>
+                        </div>
                     </div>
                     <div className="flex">
                         <span className="flex mr-2.5 self-center">

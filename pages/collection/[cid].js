@@ -64,18 +64,25 @@ export default function Bookmarks() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className="min-h-screen pt-20 lg:w-[70%] w-[90%] m-auto">
-                <div className="pb-3 flex">
-                    <div>
+                <div className="pb-3 flex justify-between">
+                    <div className="w-[70%] self-center">
                         {userData && (
-                            edit === false ? <h1 className="text-black dark:text-white">
+                            edit === false ? <h1 className="text-black truncate dark:text-white font-poppins font-bold text-2xl">
                                 {userData.getUser.bookmarks.name}
-                            </h1> : <input onChange={handleInput} type="text" placeholder="add new name" value={text} />
+                            </h1> : <input className="bg-transparent b-0 w-full p-2 outline-none text-black dark:text-white font-poppins font-medium" onChange={handleInput} type="text" placeholder="Name your stash"
+                                value={text} />
                         )}
                     </div>
-                    <div>
+                    <div className="self-center cursor-pointer bg-transparent hover:border-[1px] border-transparent hover:border-blue-500 duration-300 p-2 rounded-md">
                         {session && session.id === cid && (
                             <div onClick={handleApply}>
-                                {edit === true ? <h1>apply</h1> : <h1>edit</h1>}
+                                {
+                                    edit === true ? <div>
+                                        <h1 className="text-white font-poppins text-sm font-medium">✅ Apply</h1>
+                                    </div> : <div>
+                                        <h1 className="text-white font-poppins text-sm font-medium">✏️ Edit</h1>
+                                    </div>
+                                }
                             </div>
                         )}
                     </div>
