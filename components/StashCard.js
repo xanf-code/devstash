@@ -31,7 +31,7 @@ export default function StashCard({ stash }) {
     });
 
     return (
-        <div className={`select-none ${watched ? 'dark:bg-[#0a0a0a] bg-[#FAFAFA]' : 'dark:bg-[#100F10] bg-[#FAFAFA]'} rounded-md lg:m-0 lg:break-inside mb-4 last:mb-0 lg:cursor-pointer duration-300 hover:shadow-lg`}>
+        <div className={`select-none ${watched ? 'dark:bg-[#0a0a0a] bg-[#fbfbfb]' : 'dark:bg-[#100F10] bg-[#FAFAFA]'} rounded-md lg:m-0 lg:break-inside mb-4 last:mb-0 lg:cursor-pointer duration-300 hover:shadow-lg`}>
             <span onClick={viewPost}>
                 <a href={stash.body} target="_blank" rel="noopener noreferrer">
                     <CardHeader stash={stash} />
