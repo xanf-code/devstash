@@ -89,6 +89,8 @@ const ADD_BOOKMARKS = gql`
 const GET_BOOKED = gql`
   query getUser($userID: ID!) {
     getUser(userID: $userID) {
+      name
+      image
       bookmarks {
         name
         public
@@ -112,6 +114,9 @@ const FETCH_COLLECTION_QUERY = gql`
         username
         userID
       }
+      views {
+          uuid
+        }
       creator {
         username
         userImage

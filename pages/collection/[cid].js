@@ -60,8 +60,19 @@ export default function Bookmarks() {
     return (
         <div>
             <Head>
-                <title>Bookmarks</title>
-                <link rel="icon" href="/favicon.ico" />
+                <title>DevStash | {userData && userData.getUser.name}</title>
+                <meta name="title" content={`DevStash | ${userData && userData.getUser.name} Bookmarks`} />
+                <meta name="description" content={userData && userData.getUser.name} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://devstash.vercel.app/collection/60eb205e5f320037e0973cc4" />
+                <meta property="og:title" content="Bookmarks" />
+                <meta property="og:description" content="something here" />
+                <meta property="og:image" content="" />
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://devstash.vercel.app/collection/60eb205e5f320037e0973cc4" />
+                <meta property="twitter:title" content="Bookmarks" />
+                <meta property="twitter:description" content="something here" />
+                <meta property="twitter:image" content="" />
             </Head>
             <div className="min-h-screen pt-20 lg:w-[70%] w-[90%] m-auto">
                 <div className="pb-3 flex justify-between">
@@ -78,9 +89,9 @@ export default function Bookmarks() {
                             <div onClick={handleApply}>
                                 {
                                     edit === true ? <div>
-                                        <h1 className="text-white font-poppins text-sm font-medium">✅ Apply</h1>
+                                        <h1 className="text-black dark:text-white font-poppins text-sm font-medium">✅ Apply</h1>
                                     </div> : <div>
-                                        <h1 className="text-white font-poppins text-sm font-medium">✏️ Edit</h1>
+                                        <h1 className="text-black dark:text-white font-poppins text-sm font-medium">✏️ Edit</h1>
                                     </div>
                                 }
                             </div>

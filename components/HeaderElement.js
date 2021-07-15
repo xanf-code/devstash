@@ -4,8 +4,9 @@ import themeStore from "../store/darkMode";
 import navStore from "../store/menuStore";
 import { signIn, signOut, useSession } from 'next-auth/client';
 import Image from 'next/image'
-import { Menu } from '@headlessui/react'
 import Button from '../components/Buttons/Button'
+import { useState } from "react";
+import Menu from './Menu/Menu'
 
 export default function HeaderElement() {
 
@@ -13,6 +14,7 @@ export default function HeaderElement() {
     const dark = themeStore(state => state.dark)
     const toggleDark = themeStore(state => state.toggleDark)
     const toggleNav = navStore(state => state.toggleNav)
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const root = window.document.documentElement;
@@ -23,6 +25,9 @@ export default function HeaderElement() {
         }
     }, [dark])
 
+    const toggleMenu = () => {
+        setOpen(!open)
+    }
     return (
         <header className="duration-200 bg-[#fff] border-b-2 border-gray-100 dark:border-gray-900 dark:bg-black z-40 fixed w-screen">
             <div className="flex flex-row justify-between items-center py-3 md:flex-row px-4 container max-w-5xl mx-auto">
@@ -35,30 +40,18 @@ export default function HeaderElement() {
                 </Link>
                 <div className="flex">
                     <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
-                        <div className="">
-                            {session ? (
-                                /*Removed invisible lg:*/
-                                <Menu as="div" className="lg:cursor-pointer visible lg:relative lg:flex-col lg:self-center">
-                                    <Menu.Button className="self-center flex select-none">
-                                        <Image className="inline object-cover mr-0.5 rounded-full self-center" src={session.user.image} alt={session.user.name} width={30} height={30} />
-                                    </Menu.Button>
-                                    <Menu.Items className="absolute bg-white mt-3">
-                                        <Link href={`/collection/${session.id}`}>
-                                            <a>
-                                                <h1>bookmark</h1>
-                                            </a>
-                                        </Link>
-                                        <div onClick={signOut}>
-                                            <h1>sign out</h1>
-                                        </div>
-                                    </Menu.Items>
-                                </Menu>
+                        {session ? (
+                            <div onClick={toggleMenu} className="lg:cursor-pointer relative self-center">
+                                <Image className="inline object-cover mr-0.5 rounded-full self-center" src={session.user.image} alt={session.user.name} width={30} height={30} />
+                                {open && (
+                                    <Menu session={session} signOut={signOut} />
+                                )}
+                            </div>
 
-                            ) : (
-                                <Button clickhandler={signIn} class="border-[0.5px] dark:border-gray-600 dark:hover:border-[#0078ff] rounded-[5px] lg:cursor-pointer hover:border-[#0078ff] duration-300"
-                                    textClass="select-none px-2 py-1 text-black dark:text-white font-poppins font-medium text-sm" text="Sign in" />
-                            )}
-                        </div>
+                        ) : (
+                            <Button clickhandler={signIn} class="border-[0.5px] dark:border-gray-600 dark:hover:border-[#0078ff] rounded-[5px] lg:cursor-pointer hover:border-[#0078ff] duration-300"
+                                textClass="select-none px-2 py-1 text-black dark:text-white font-poppins font-medium text-sm" text="Sign in" />
+                        )}
                         <div onClick={() => toggleDark()} className="self-center pl-4 pr-1 lg:cursor-pointer">
                             {!dark ? <svg
                                 className='text-gray-600'
