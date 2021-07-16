@@ -41,13 +41,14 @@ export default function HeaderElement() {
                 <div className="flex">
                     <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
                         {session ? (
-                            <div onClick={toggleMenu} className="lg:cursor-pointer relative self-center">
-                                <Image className="inline object-cover mr-0.5 rounded-full self-center" src={session.user.image} alt={session.user.name} width={30} height={30} />
+                            <div>
+                                <div onClick={toggleMenu} className="lg:cursor-pointer relative self-center flex">
+                                    <Image className="inline object-cover mr-0.5 rounded-full self-center" src={session.user.image} alt={session.user.name} width={30} height={30} />
+                                </div>
                                 {open && (
-                                    <Menu session={session} signOut={signOut} />
+                                    <Menu session={session} signOut={signOut} setOpen={setOpen} />
                                 )}
                             </div>
-
                         ) : (
                             <Button clickhandler={signIn} class="border-[0.5px] dark:border-gray-600 dark:hover:border-[#0078ff] rounded-[5px] lg:cursor-pointer hover:border-[#0078ff] duration-300"
                                 textClass="select-none px-2 py-1 text-black dark:text-white font-poppins font-medium text-sm" text="Sign in" />
